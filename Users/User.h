@@ -10,7 +10,7 @@ class User{
     public:
         virtual int due_days(){return -1;};
         virtual int fine_day(){return -1;};
-        virtual int Calc_fine(){return -1;};
+        virtual int Calc_fine(){return -10;};
         virtual void clear_fine(){};
         virtual bool add_book(Book &b) {return false;}
     private:
@@ -24,4 +24,5 @@ class User{
         User()=delete;
         bool is_password(std::string pass);
         virtual bool is_admin();
+        int get_id();
 };

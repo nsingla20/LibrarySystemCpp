@@ -6,3 +6,6 @@ bool User::is_password(string pass){
 bool User::is_admin(){
     return false;
 }
+int User::get_id(){
+    return id;
+}
