@@ -2,10 +2,21 @@
 #include "../Users/User.h"
 #include<memory>
 #include<ctime>
+#include<iostream>
 using namespace std;
-void Book::book_req(const User &u){
-    this->issue_to=make_shared<User>(u);
-    this->issue_t=time(0);
+
+using namespace std;
+bool Book::book_req(User &u){
+    if(is_available()){
+        if(u.add_book(*this)){
+            this->issue_to=make_shared<User>(u);
+            this->issue_t=time(0);
+            return true;
+        }
+        return false;
+    }
+    cout<<"Sorry "<<u.username<<" ,Book is currently issued to "<<issue_to->username<<endl;
+    return true;
 }
 
 // template<typename U>

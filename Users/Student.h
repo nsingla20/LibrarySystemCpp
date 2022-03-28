@@ -2,6 +2,8 @@
 #include "User.h"
 #include "../Books/Book.h"
 #include <boost/ptr_container/ptr_vector.hpp>
+class Book;
+class User;
 class Student : public User{
     private:
         boost::ptr_vector<Book> books;
@@ -12,6 +14,8 @@ class Student : public User{
         int fine_day() override{
             return 2;
         }
-        int Calc_fine();
-        void clear_fine();
+        int Calc_fine() override;
+        void clear_fine() override;
+        bool add_book(Book &b) override;
+        Student(std::string s, std::string t, int i);
 };

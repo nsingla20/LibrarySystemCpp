@@ -6,6 +6,7 @@
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
 using namespace std;
+class User;
 class Book{
     private:
         shared_ptr<User> issue_to;
@@ -16,7 +17,7 @@ class Book{
         string ISBN;
         string Pub;
 
-        void book_req(const User &u);
+        bool book_req(User &u);
         time_t show_dueDate();
 
         shared_ptr<User> get_issue_to();

@@ -1,8 +1,15 @@
 #include "Student.h"
 #include <ctime>
 #include "../Books/Book.h"
+#include<iostream>
+#include "UserDatabase.h"
 #include <boost/ptr_container/ptr_vector.hpp>
+using namespace std;
 
+Student::Student(string a,string b,int i):User(a,b,i){
+    UserDatabase::add(*this);
+    // cout<<typeid(this).name()<<" account created with username:"<<a<<endl;
+}
 int Student::Calc_fine(){
     int fine=0;
     time_t t;
@@ -20,4 +27,12 @@ void Student::clear_fine(){
         book.unissue();
     }
     books.clear();
+}
+bool Student::add_book(Book &b){
+    if (books.size()==5){
+        cout<<"Max issue limit reached!"<<endl;
+        return false;
+    }
+    books.push_back(&b);
+    return true;
 }
