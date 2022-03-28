@@ -3,9 +3,11 @@
 #include "../Books/Book.h"
 #include <boost/ptr_container/ptr_vector.hpp>
 #include<iostream>
+#include "clone.h"
 class User;
 class Book;
 class Professor : public User{
+    CLONE(Professor)
     private:
         boost::ptr_vector<Book> books;
     public:

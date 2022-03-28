@@ -1,12 +1,14 @@
 #pragma once
 #include<string>
 #include<iostream>
-// #include<memory>
+#include<memory>
 #include "../Books/Book.h"
 #include "UserDatabase.h"
+#include "clone.h"
 class UserDatabase;
 class Book;
 class User{
+    CLONE_BASE(User)
     public:
         virtual int due_days(){return -1;};
         virtual int fine_day(){return -1;};

@@ -1,5 +1,6 @@
 #include "choose.h"
 #include <bits/stdc++.h>
+#include<limits>
 using namespace std;
 int choose(vector<string> v){
     // cout << "\033[2J\033[1;1H";
@@ -10,7 +11,10 @@ int choose(vector<string> v){
     int x;
     start:
     cout<<"Please enter a number from 1 to "<<v.size()<<" : ";
+    x=0;
     cin>>x;
+    cin.clear();
+    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     if(x>v.size()||x<1){
         goto start;
     }cout<<"\n\n";

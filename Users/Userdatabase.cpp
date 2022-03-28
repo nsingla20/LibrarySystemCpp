@@ -11,8 +11,10 @@ void UserDatabase::add(User &u){
         cout<<"Account with username:"<<u.username<<" already in database"<<endl;
     }
     // users.push_back(&u);
-    m[u.username]=make_shared<User>(u);
-    cout<<"Account with username:"<<u.username<<" added to database (Account type:"<<typeid(u).name()<<") admin:"<<u.is_admin()<<endl;
+    // cout<<u.Calc_fine();
+    m[u.username]=u.clone();
+    cout<<"Account with username:"<<u.username<<" added to database (Account type:"<<typeid(*(m[u.username])).name()<<") admin:"<<u.is_admin()<<endl;
+    // cout<<(*m[u.username]).Calc_fine()<<endl;
 }
 bool UserDatabase::exists(string username){
     auto i=m.find(username);

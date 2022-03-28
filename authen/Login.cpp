@@ -23,7 +23,7 @@ shared_ptr<User> Login(){
             goto start;
         }
         cout<<"Login Successfull as "<<typeid(*u).name()<<endl;
-        cout<<(*u).Calc_fine()<<endl;
+        // cout<<(*u).Calc_fine()<<endl;
         return u;
     }else{
         cout<<"ERROR Account doesn't exist!"<<endl;
