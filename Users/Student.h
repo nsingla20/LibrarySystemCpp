@@ -19,5 +19,5 @@ class Student : public User{
         int Calc_fine() override;
         void clear_fine() override;
         bool add_book(Book &b) override;
-        Student(std::string s, std::string t, int i);
+        Student(std::string s, std::string t);
 };

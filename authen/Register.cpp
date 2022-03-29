@@ -2,14 +2,14 @@
 #include "../Users/Users.h"
 #include "../choose.h"
 #include <bits/stdc++.h>
-void stu(string username,string password){
-    Student s(username,password,0);
+User* stu(string username,string password){
+    return new Student(username,password);
 }
-void prof(string username,string password){
-    Professor p(username,password,1);
+User* prof(string username,string password){
+    return new Professor(username,password);
 }
-void admin(string username,string password){
-    Librarian(username,password,2);
+User* admin(string username,string password){
+    return new Librarian(username,password);
 }
 void Register(){
     vector<string> ch;
@@ -17,28 +17,29 @@ void Register(){
     ch.insert(ch.end(),{"Register as Student","Register as Professor","Register as admin (Librarian)"});
     int x=choose(ch);
     start:
-    cout<<"Please input your username: ";
+    cout<<"Please input your Name: ";
     cin>>username;
-    if(UserDatabase::exists(username)){
-        cout<<"Account already present! Try different username."<<endl;
-        goto start;
-    }
+    // if(UserDatabase::exists(username)){
+    //     cout<<"Account already present! Try different username."<<endl;
+    //     goto start;
+    // }
     cout<<"Please input password: ";
     cin>>password;
     
-    
+    User* u;
     switch (x)
     {
     case 1:
-        stu(username,password);
+        u=stu(username,password);
         break;
     case 2:
-        prof(username,password);
+        u=prof(username,password);
         break;
     case 3:
-        admin(username,password);
+        u=admin(username,password);
         break;
     default:
         break;
     }
+    cout<<"Your unique id is: "<<(*u).get_id()<<" (Please note it for future ref)"<<endl;
 }

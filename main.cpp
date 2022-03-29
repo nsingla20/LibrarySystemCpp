@@ -2,6 +2,7 @@
 #include <bits/stdc++.h>
 #include "choose.h"
 #include "authen/authen.h"
+#include "Menu/Menu.h"
 #include<memory>
 using namespace std;
 
@@ -26,5 +27,10 @@ int main(int, char**) {
         break;
     default:
         return 1;
+    }
+    if((*u).is_admin()){
+        admin_main(u);
+    }else{
+        user_main(u);
     }
 }

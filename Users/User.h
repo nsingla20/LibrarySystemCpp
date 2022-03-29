@@ -18,8 +18,9 @@ class User{
     private:
         std::string password;
         int id;
+        static int count;
     protected:
-        User(std::string name,std::string pass,int i):username(name),password(pass),id(i){}
+        User(std::string name,std::string pass);
     public:
         std::string username;
         

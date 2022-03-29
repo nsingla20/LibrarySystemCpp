@@ -13,7 +13,7 @@ class Professor : public User{
     public:
         // static const int fine_day=5;
         // static const int due_days=60;
-        Professor(string a,string b,int i);
+        Professor(string a,string b);
         int due_days() override{
             return 60;
         }

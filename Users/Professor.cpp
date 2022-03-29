@@ -4,7 +4,7 @@
 #include <boost/ptr_container/ptr_vector.hpp>
 #include "UserDatabase.h"
 
-Professor::Professor(string a,string b,int i):User(a,b,i){
+Professor::Professor(string a,string b):User(a,b){
     UserDatabase::add(*this);
     // cout<<typeid(this).name()<<" account created with username:"<<a<<endl;
 }

@@ -1,4 +1,5 @@
 #include "choose.h"
+#include "getint.h"
 #include <bits/stdc++.h>
 #include<limits>
 using namespace std;
@@ -9,14 +10,9 @@ int choose(vector<string> v){
         cout<<"OPTION "<<i<<": "<<v[i-1]<<endl;
     }
     int x;
-    start:
-    cout<<"Please enter a number from 1 to "<<v.size()<<" : ";
-    x=0;
-    cin>>x;
-    cin.clear();
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    if(x>v.size()||x<1){
-        goto start;
-    }cout<<"\n\n";
+    do{
+        x=getint("Please enter a number from 1 to "+to_string(v.size())+" : ");
+    }while(x>v.size()||x<1);
+    cout<<"\n\n";
     return x;
 }

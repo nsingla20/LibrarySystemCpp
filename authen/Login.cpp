@@ -2,20 +2,21 @@
 #include "Login.h"
 #include "../Users/UserDatabase.h"
 #include "../Users/User.h"
+#include "../getint.h"
 #include<memory>
 using namespace std;
 shared_ptr<User> Login(){
-    string username,password;
+    int id;
+    string password;
     start:
-    cout<<"Please input your username: ";
-    cin>>username;
-    if(!UserDatabase::exists(username)){
-        cout<<"Account not found present! Try different username."<<endl;
+    id=getint("Please input your id: ");
+    if(!UserDatabase::exists(id)){
+        cout<<"Account not found present! Try different id."<<endl;
         goto start;
     }
     cout<<"Please input password: ";
     cin>>password;
-    shared_ptr<User> u=UserDatabase::search(username);
+    shared_ptr<User> u=UserDatabase::search(id);
     if(u){
         if(!(*u).is_password(password)){
             cout<<"Wrong Password! Try again."<<endl;

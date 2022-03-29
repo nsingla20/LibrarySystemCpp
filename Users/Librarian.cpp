@@ -4,6 +4,6 @@
 bool Librarian::is_admin(){
     return true;
 }
-Librarian::Librarian(string a,string b,int i):User(a,b,i){
+Librarian::Librarian(string a,string b):User(a,b){
     UserDatabase::add(*this);
 }
