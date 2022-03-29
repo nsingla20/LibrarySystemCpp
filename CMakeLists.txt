@@ -1,13 +1,22 @@
 cmake_minimum_required(VERSION 3.0.0)
 project(LibrarySystemCpp VERSION 0.1.0)
-
-include(CTest)
+set(Boost_USE_STATIC_LIBS OFF)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
 
 enable_testing()
 file(GLOB_RECURSE LibrarySystemCpp_SRC CONFIGURE_DEPENDS "*.h" "*.cpp")
 file(GLOB_RECURSE REMOVE_CMAKE "build/*")
 list(REMOVE_ITEM LibrarySystemCpp_SRC ${REMOVE_CMAKE})
-add_executable(LibrarySystemCpp ${LibrarySystemCpp_SRC})
+
+SET(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS}  -Wl,-rpath -Wl,/usr/include/boost")
+find_package(Boost 1.55 COMPONENTS serialization)
+if(Boost_FOUND)
+    include_directories(${Boost_INCLUDE_DIRS})
+    add_executable(LibrarySystemCpp ${LibrarySystemCpp_SRC})
+    target_link_libraries(LibrarySystemCpp ${Boost_LIBRARIES})
+endif()
+include(CTest)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})

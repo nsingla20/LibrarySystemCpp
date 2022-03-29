@@ -3,10 +3,17 @@
 #include "choose.h"
 #include "authen/authen.h"
 #include "Menu/Menu.h"
-#include<memory>
+#include <boost/serialization/shared_ptr.hpp>
+#include <cstdlib>
+#include <boost/serialization/export.hpp>
+BOOST_CLASS_EXPORT_GUID(Student, "Student")
+BOOST_CLASS_EXPORT_GUID(Professor, "Professor")
+BOOST_CLASS_EXPORT_GUID(Librarian, "Librarian")
 using namespace std;
 
 int main(int, char**) {
+    UserDatabase::load();
+    atexit(UserDatabase::save);
     cout<<"Welcome! to Library Management System"<<endl;
     // Professor p("naman","n",1);
     // Student s("n","n",2);

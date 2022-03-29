@@ -1,7 +1,7 @@
 #pragma once
 #include <ctime>
 #include<string>
-#include<memory>
+#include <boost/serialization/shared_ptr.hpp>
 #include "../Users/User.h"
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>

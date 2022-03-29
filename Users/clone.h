@@ -19,4 +19,5 @@ public: \
         shared_ptr<User> res = clone_impl(); \
         assert(dynamic_cast<MyType*>(res.get()) != 0); \
         return static_pointer_cast<MyType>(res); \
-    }
+    } \
+    
