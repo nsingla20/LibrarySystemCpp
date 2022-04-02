@@ -2,8 +2,11 @@
 #include "../choose.h"
 #include "Book.h"
 #include "BookDatabase.h"
+#include "../Users/UserDatabase.h"
+#include "../getint.h"
 #include<iostream>
 #include<limits>
+#include<vector>
 #include<string>
 #include<memory>
 Book& createBook(){
@@ -53,4 +56,17 @@ void updateBook(){
     (*b).author=author;
     (*b).Pub=Pub;
     cout<<"Updated Book : "<<string(*b)<<endl;
+}
+vector<string> issueList(){
+    int x;
+    x=getint("id(-1 to list all issues): ");
+    if(x>-1){
+        if(UserDatabase::exists(x)){
+            return BookDatabase::list_issue(*UserDatabase::search(x));
+        }
+        cout<<"User with id: "<<x<<" doesn't exist!"<<endl;
+        return *(new vector<string>());
+    }else{
+        return BookDatabase::list_issue();
+    }
 }

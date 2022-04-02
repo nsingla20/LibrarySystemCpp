@@ -56,6 +56,15 @@ vector<string> BookDatabase::list_issue(){
     }
     return v;
 }
+vector<string> BookDatabase::list_issue(User& u){
+    vector<string> v;
+    for(auto i:m){
+        if((*(i.second)).get_issue_to()!=nullptr && (*((*(i.second)).get_issue_to())).get_id()==u.get_id()){
+            v.push_back(string(*(i.second)));
+        }
+    }
+    return v;
+}
 bool BookDatabase::exists(string ISBN){
     auto i=m.find(ISBN);
     return i!=m.end();

@@ -6,6 +6,10 @@
 #include<memory>
 #include<bits/stdc++.h>
 void printv(vector<string> v){
+    if(v.size()==0){
+        cout<<"Empty"<<endl;
+        return;
+    }
     for(int i=1;i<=v.size();i++){
         cout<<i<<". "<<v[i-1]<<endl;
     }
@@ -86,7 +90,7 @@ void admin_main(shared_ptr<User> u){
         change_books(u);
         break;
     case 3:
-        printv(BookDatabase::list_issue());
+        printv(issueList());
         break;
     default:
         return;
