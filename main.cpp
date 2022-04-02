@@ -12,7 +12,7 @@ BOOST_CLASS_EXPORT_GUID(Professor, "Professor")
 BOOST_CLASS_EXPORT_GUID(Librarian, "Librarian")
 using namespace std;
 
-int main(int, char**) {
+int min(int, char**) {
     UserDatabase::load();
     BookDatabase::load();
     atexit(UserDatabase::save);
