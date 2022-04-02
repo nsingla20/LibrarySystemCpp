@@ -20,12 +20,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: "create and enter build dir"
-      run: |
-        mkdir build
-        cd build
-    - name: "run cmake "
-      run: cmake ..
-    - name: "run make " 
-      run: make 
+    - name: "Create build directory and run CMake"
+      run: cmake -S . -B build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE={{BUILD_TYPE}}
+    - name: "Build Project" 
+      run: cmake --build build --target all --config {{BUILD_TYPE}} --target LibrarySystemCpp -j 14 --
       
