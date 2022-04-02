@@ -10,4 +10,4 @@ Please run following command to ensure you have boost installed:
 sudo apt-get install libboost-all-dev
 ```
 
->Add /usr/include/boost(path to boost library) to Library_path (No need if using >CMake, Added to CMakeLists.txt)
+>Add /usr/include/boost(path to boost library) to Library_path (No need if using CMake, Added to CMakeLists.txt)
