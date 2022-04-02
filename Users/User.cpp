@@ -14,3 +14,6 @@ int User::get_id(){
 User::User(std::string name,std::string pass):username(name),password(pass){
     id=UserDatabase::count();
 }
+User::operator std::string() {
+    return "\nName:"+(*this).username+"\nType:"+typeid(*(this)).name()+"\nid:"+to_string((*this).get_id());
+}

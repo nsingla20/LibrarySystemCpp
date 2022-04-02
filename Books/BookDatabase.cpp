@@ -47,6 +47,15 @@ vector<string> BookDatabase::list_all(){
     }
     return v;
 }
+vector<string> BookDatabase::list_issue(){
+    vector<string> v;
+    for(auto i:m){
+        if((*(i.second)).get_issue_to()!=nullptr){
+            v.push_back(string(*(i.second)));
+        }
+    }
+    return v;
+}
 bool BookDatabase::exists(string ISBN){
     auto i=m.find(ISBN);
     return i!=m.end();

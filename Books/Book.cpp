@@ -41,3 +41,6 @@ void Book::unissue(){
 Book::Book(string t,string a,string I,string P):title(t),author(a),ISBN(I),Pub(P){
     BookDatabase::add(*this);
 }
+Book::operator std::string(){
+    return "\nTitle: "+(*this).title+"\nAuthor: "+(*(this)).author+"\nISBN: "+(*(this)).ISBN+"\nPublication: "+(*(this)).Pub+"Issued to: "+(issue_to==nullptr?"None":((*issue_to).username));
+}

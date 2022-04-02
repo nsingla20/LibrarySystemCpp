@@ -19,5 +19,6 @@ class BookDatabase{
         static void del(string isbn);
         static shared_ptr<Book> search(string isbn);
         static vector<string> list_all();
+        static vector<string> list_issue();
         static int count();
 };

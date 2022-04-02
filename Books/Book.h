@@ -26,7 +26,7 @@ class Book{
     
         bool is_available();
         void unissue();
-        operator std::string() const{ return "Title: "+(*this).title+"; Author: "+(*(this)).author+"; ISBN: "+(*(this)).ISBN+"; Publication: "+(*(this)).Pub; }
+        operator std::string();
         Book(){}
         Book(string t,string a,string I,string P);
     private:

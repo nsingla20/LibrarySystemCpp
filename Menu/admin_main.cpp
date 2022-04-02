@@ -74,7 +74,7 @@ void admin_main(shared_ptr<User> u){
         return;
     }
     vector<string> ch;
-    ch.insert(ch.end(),{"Users Panel","Books Panel","Exit"});
+    ch.insert(ch.end(),{"Users Panel","Books Panel","Issue List","Exit"});
     start:
     int x=choose(ch);
     switch (x)
@@ -84,6 +84,9 @@ void admin_main(shared_ptr<User> u){
         break;
     case 2:
         change_books(u);
+        break;
+    case 3:
+        printv(BookDatabase::list_issue());
         break;
     default:
         return;
