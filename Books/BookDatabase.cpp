@@ -57,10 +57,10 @@ vector<string> BookDatabase::list_issue(){
     }
     return v;
 }
-vector<string> BookDatabase::list_issue(User& u){
+vector<string> BookDatabase::list_issue(int id){
     vector<string> v;
     for(auto i:m){
-        if((*(i.second)).get_issue_to()!=nullptr && (*((*(i.second)).get_issue_to())).get_id()==u.get_id()){
+        if((*(i.second)).get_issue_to()!=nullptr && (*((*(i.second)).get_issue_to())).get_id()==id){
             v.push_back(string(*(i.second))+"\nFine: Rs"+to_string(fine(*(i.second))));
         }
     }
@@ -94,4 +94,13 @@ shared_ptr<Book> BookDatabase::search(string ISBN){
 }
 int BookDatabase::count(){
     return m.size();
+}
+vector<shared_ptr<Book>> BookDatabase::userBooks(int id){
+    vector<shared_ptr<Book>> v;
+    for(auto i:m){
+        if((*(i.second)).get_issue_to()!=nullptr && (*((*(i.second)).get_issue_to())).get_id()==id){
+            v.push_back(i.second);
+        }
+    }
+    return v;
 }

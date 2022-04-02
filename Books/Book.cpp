@@ -40,17 +40,19 @@ bool Book::is_available(){
     return issue_to==nullptr;
 }
 void Book::unissue(){
+    int f=fine(*this);
     issue_to=nullptr;
     issue_t=time(0);
     BookDatabase::save();
-    cout<<"Book "<<title<<" returned"<<endl;
+    cout<<"Book "<<title<<" returned. (Fine: Rs"<<f<<")"<<endl;
 }
 Book::Book(string t,string a,string I,string P):title(t),author(a),ISBN(I),Pub(P){
     BookDatabase::add(*this);
 }
 Book::operator std::string(){
     char s[100];
-    strftime(s,sizeof(s),"%a %b %d, %Y",localtime(new time_t(this->show_dueDate())));
+    if(issue_to)
+        strftime(s,sizeof(s),"%a %b %d, %Y",localtime(new time_t(this->show_dueDate())));
     return "\nTitle: "+(*this).title
             +"\nAuthor: "+(*(this)).author
             +"\nISBN: "+(*(this)).ISBN

@@ -11,8 +11,8 @@ class User;
 class Book;
 class Professor : public User{
     CLONE(Professor)
-    private:
-        vector<shared_ptr<Book>> books;
+    // private:
+    //     vector<shared_ptr<Book>> books;
     public:
         // static const int fine_day=5;
         // static const int due_days=60;
@@ -32,8 +32,8 @@ class Professor : public User{
         template<class Archive>
         void serialize(Archive & ar, const unsigned int file_version){
             ar & boost::serialization::base_object<User>(*this);
-            for(auto i:books){
-                ar & i;
-            }
+            // for(auto i:books){
+            //     ar & i;
+            // }
         }
 };

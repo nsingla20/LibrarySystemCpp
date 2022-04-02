@@ -1,6 +1,6 @@
 #include "Professor.h"
 #include <ctime>
-#include "../Books/Book.h"
+#include "../Books/Books.h"
 // #include <boost/ptr_container/ptr_vector.hpp>
 #include "UserDatabase.h"
 #include<memory>
@@ -11,22 +11,19 @@ Professor::Professor(string a,string b):User(a,b){
 }
 
 int Professor::Calc_fine(){
-    int fine=0;
+    int f=0;
+    vector<shared_ptr<Book>> books=BookDatabase::userBooks(id);
     time_t t;
     for(auto book:books){
-        t=(*book).show_dueDate();
-        if(time(0)>t){
-            t=difftime(time(0),t);
-            fine+=(t/86400)*fine_day();
-        }
+        f+=fine(*book);
     }
-    return fine;
+    return f;
 }
 void Professor::clear_fine(){
+    vector<shared_ptr<Book>> books=BookDatabase::userBooks(id);
     for(auto book:books){
         (*book).unissue();
     }
-    books.clear();
 }
 
 bool Professor::add_book(Book &b){

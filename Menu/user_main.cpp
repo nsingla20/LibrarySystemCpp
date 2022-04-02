@@ -7,7 +7,7 @@
 #include "../Books/createBook.h"
 void user_main(shared_ptr<User> u){
     vector<string> ch;
-    ch.insert(ch.end(),{"List all Books","List My Books","Issue a Book","Return a Book","Exit"});
+    ch.insert(ch.end(),{"List all Books","List My Books","Issue a Book","Return a Book","Return all Books","Calculate Total Fine","Exit"});
     start:
     int x=choose(ch);
     string isbn;
@@ -28,6 +28,12 @@ void user_main(shared_ptr<User> u){
         cout<<"ISBN: ";
         cin>>isbn;
         (*(BookDatabase::search(isbn))).unissue();
+        break;
+    case 5:
+        (*u).clear_fine();
+        break;
+    case 6:
+        cout<<"Total Fine: "<<(*u).Calc_fine();
         break;
     default:
         return;

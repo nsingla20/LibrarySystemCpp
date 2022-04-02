@@ -13,25 +13,21 @@ Student::Student(string a,string b):User(a,b){
     // cout<<typeid(this).name()<<" account created with username:"<<a<<endl;
 }
 int Student::Calc_fine(){
-    int fine=0;
-    time_t t;
+    int f=0;
+    vector<shared_ptr<Book>> books=BookDatabase::userBooks(id);
     for(auto book:books){
-        t=(*book).show_dueDate();
-        if(time(0)>t){
-            t=difftime(time(0),t);
-            fine+=(t/86400)*fine_day();
-        }
+        f+=fine(*book);
     }
-    return fine;
+    return f;
 }
 void Student::clear_fine(){
+    vector<shared_ptr<Book>> books=BookDatabase::userBooks(id);
     for(auto book:books){
         (*book).unissue();
     }
-    books.clear();
 }
 bool Student::add_book(Book &b){
-    if (issueList(this->get_id()).size()==5){
+    if (BookDatabase::userBooks(id).size()==5){
         cout<<"Max issue limit for issue reached!"<<endl;
         return false;
     }

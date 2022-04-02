@@ -66,7 +66,7 @@ vector<string> issueList(){
 vector<string> issueList(int x){
     if(x>-1){
         if(UserDatabase::exists(x)){
-            return BookDatabase::list_issue(*UserDatabase::search(x));
+            return BookDatabase::list_issue(x);
         }
         cout<<"User with id: "<<x<<" doesn't exist!"<<endl;
         return *(new vector<string>());
