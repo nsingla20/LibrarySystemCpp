@@ -41,10 +41,10 @@ shared_ptr<User> UserDatabase::search(int id){
 }
 vector<string> UserDatabase::list_all(){
     vector<string> v;
-    string s="";
+    // string s="";
     for(auto i:m){
-        s="Name:"+(*i.second).username+" Type:"+typeid(*(i.second)).name()+" id:"+to_string((*i.second).get_id())+" Admin:"+(((*i.second).is_admin())?"True":"False");
-        v.push_back(s);
+        // s="Name:"+(*i.second).username+" Type:"+typeid(*(i.second)).name()+" id:"+to_string((*i.second).get_id())+" Admin:"+(((*i.second).is_admin())?"True":"False");
+        v.push_back(string(*(i.second)));
     }
     return v;
 }
@@ -56,7 +56,7 @@ int UserDatabase::count(){
 // }
 void UserDatabase::save(){
     ofstream ofs;
-    ofs.open("Users.bin", ofstream::out);
+    ofs.open("Users.dat", ofstream::out);
     boost::archive::text_oarchive oa(ofs);
     for(auto i:m){
         if(i.second)
@@ -68,7 +68,7 @@ void UserDatabase::save(){
 void UserDatabase::load(){
     ifstream ifs;
     try{
-        ifs.open("Users.bin", ifstream::in);
+        ifs.open("Users.dat", ifstream::in);
         boost::archive::text_iarchive ia(ifs);
         
         while(true){

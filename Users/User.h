@@ -30,7 +30,7 @@ class User{
         bool is_password(std::string pass);
         virtual bool is_admin();
         int get_id();
-    
+        operator std::string() {return "Name:"+(*this).username+" Type:"+typeid(*(this)).name()+" id:"+to_string((*this).get_id()) + " Admin:"+(((*this).is_admin())?"True":"False");}
     private:
         friend class boost::serialization::access;
 

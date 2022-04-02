@@ -14,7 +14,7 @@ void change_users(shared_ptr<User> u){
     vector<string> ch;
     start:
     ch.clear();
-    ch.insert(ch.end(),{"List all Users","Add a User","Remove a User","Return to Main menu"});
+    ch.insert(ch.end(),{"List all Users","Add a User","Remove a User","Update a User","Return to Main menu"});
     int x=choose(ch);
     int id;
     switch (x)
@@ -26,11 +26,15 @@ void change_users(shared_ptr<User> u){
         Register();
         break;
     case 3:
-        getint("Input the id to del :");
+        id=getint("Input the id to del :");
         UserDatabase::del(id);
         break;
     case 4:
+        updateUser();
+        break;
+    default :
         return;
+        break;
     }
     goto start;
 
@@ -39,7 +43,7 @@ void change_books(shared_ptr<User> u){
     vector<string> ch;
     start:
     ch.clear();
-    ch.insert(ch.end(),{"List all Books","Add a Book","Remove a Book","Return to Main menu"});
+    ch.insert(ch.end(),{"List all Books","Add a Book","Remove a Book","Update a Book","Return to Main menu"});
     int x=choose(ch);
     string isbn;
     switch (x)
@@ -56,7 +60,11 @@ void change_books(shared_ptr<User> u){
         BookDatabase::del(isbn);
         break;
     case 4:
+        updateBook();
+        break;
+    default:
         return;
+        break;
     }
     goto start;
 

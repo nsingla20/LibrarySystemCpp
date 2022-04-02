@@ -40,10 +40,10 @@ void BookDatabase::load(){
 }
 vector<string> BookDatabase::list_all(){
     vector<string> v;
-    string s="";
+    // string s="";
     for(auto i:m){
-        s="Title: "+(*i.second).title+"; Author: "+(*(i.second)).author+"; ISBN: "+(*(i.second)).ISBN+"; Publication: "+(*(i.second)).Pub;
-        v.push_back(s);
+        // s="Title: "+(*i.second).title+"; Author: "+(*(i.second)).author+"; ISBN: "+(*(i.second)).ISBN+"; Publication: "+(*(i.second)).Pub;
+        v.push_back(string(*(i.second)));
     }
     return v;
 }

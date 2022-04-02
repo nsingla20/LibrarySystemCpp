@@ -2,3 +2,4 @@
 #include "Librarian.h"
 #include "Professor.h"
 #include "Student.h"
+#include "manage.h"

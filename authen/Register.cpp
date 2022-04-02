@@ -17,8 +17,9 @@ void Register(){
     ch.insert(ch.end(),{"Register as Student","Register as Professor","Register as admin (Librarian)"});
     int x=choose(ch);
     start:
+    cin.ignore();
     cout<<"Please input your Name: ";
-    cin>>username;
+    getline(cin,username);
     // if(UserDatabase::exists(username)){
     //     cout<<"Account already present! Try different username."<<endl;
     //     goto start;
