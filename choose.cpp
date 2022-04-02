@@ -9,7 +9,7 @@ int choose(vector<string> v){
     for(int i=1;i<=v.size();i++){
         cout<<"OPTION "<<i<<": "<<v[i-1]<<endl;
     }
-    int x;
+    int ;
     do{
         x=getint("Please enter a number from 1 to "+to_string(v.size())+" : ");
     }while(x>v.size()||x<1);
