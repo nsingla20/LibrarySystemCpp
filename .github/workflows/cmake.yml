@@ -23,5 +23,5 @@ jobs:
     - name: "Create build directory and run CMake"
       run: cmake -S . -B build -G "Unix Makefiles" -DCMAKE_BUILD_TYPE={{BUILD_TYPE}}
     - name: "Build Project" 
-      run: cmake --build build --target all --config {{BUILD_TYPE}} --target LibrarySystemCpp -j 14 --
+      run: cmake --build build --config {{BUILD_TYPE}} --target LibrarySystemCpp -j 14 --
       
