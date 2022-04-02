@@ -12,7 +12,9 @@ void printv(vector<string> v){
 }
 void change_users(shared_ptr<User> u){
     vector<string> ch;
-    ch.insert(ch.end(),{"List all Users","Add a User","Remove a User"});
+    start:
+    ch.clear();
+    ch.insert(ch.end(),{"List all Users","Add a User","Remove a User","Return to Main menu"});
     int x=choose(ch);
     int id;
     switch (x)
@@ -27,32 +29,37 @@ void change_users(shared_ptr<User> u){
         getint("Input the id to del :");
         UserDatabase::del(id);
         break;
-    default:
-        break;
+    case 4:
+        return;
     }
+    goto start;
 
 }
 void change_books(shared_ptr<User> u){
     vector<string> ch;
-    ch.insert(ch.end(),{"List all Books","Add a Book","Remove a Book"});
+    start:
+    ch.clear();
+    ch.insert(ch.end(),{"List all Books","Add a Book","Remove a Book","Return to Main menu"});
     int x=choose(ch);
-    string name;
+    string isbn;
     switch (x)
     {
     case 1:
-        printv(UserDatabase::list_all());
+        printv(BookDatabase::list_all());
         break;
     case 2:
-        Register();
+        createBook();
         break;
     case 3:
-        cout<<"Input username:";
-        cin>>name;
-        // UserDatabase::del(name);
+        cout<<"ISBN to remove:";
+        cin>>isbn;
+        BookDatabase::del(isbn);
         break;
-    default:
-        break;
+    case 4:
+        return;
     }
+    goto start;
+
 }
 void admin_main(shared_ptr<User> u){
     if(!(*u).is_admin()){

@@ -1,15 +1,17 @@
 #pragma once
 #include "User.h"
 #include "../Books/Book.h"
-#include <boost/ptr_container/ptr_vector.hpp>
+// #include <boost/ptr_container/ptr_vector.hpp>
+#include<vector>
 #include <boost/serialization/serialization.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 #include "clone.h"
 class Book;
 class User;
 class Student : public User{
     CLONE(Student)
     private:
-        boost::ptr_vector<Book> books;
+        vector<shared_ptr<Book>> books;
     public:
         int due_days() override{
             return 30;
@@ -28,5 +30,8 @@ class Student : public User{
         template<class Archive>
         void serialize(Archive & ar, const unsigned int file_version){
             ar & boost::serialization::base_object<User>(*this);
+            for(auto i:books){
+                ar & i;
+            }
         }
 };

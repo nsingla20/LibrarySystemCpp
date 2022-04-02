@@ -2,11 +2,12 @@
 
 ## _Library Management System in C++ (CS253 course)_
 
-[![Build Status](https://github.com/nsingla20/LibrarySystemCpp/actions/workflows/cmake.yml/badge.svg)](https://travis-ci.org/joemccann/dillinger)
+[![Build Status](https://github.com/nsingla20/LibrarySystemCpp/actions/workflows/cmake.yml/badge.svg)](https://github.com/nsingla20/LibrarySystemCpp)
 
 Please run following command to ensure you have boost installed:
 
 ```sh
 sudo apt-get install libboost-all-dev
-add /usr/include/boost(path to boost library) to Library_path
 ```
+
+>Add /usr/include/boost(path to boost library) to Library_path (No need if using >CMake, Added to CMakeLists.txt)

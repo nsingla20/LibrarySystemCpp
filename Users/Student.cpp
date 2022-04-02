@@ -2,8 +2,9 @@
 #include <ctime>
 #include "../Books/Book.h"
 #include<iostream>
+#include<memory>
 #include "UserDatabase.h"
-#include <boost/ptr_container/ptr_vector.hpp>
+// #include <boost/ptr_container/ptr_vector.hpp>
 using namespace std;
 
 Student::Student(string a,string b):User(a,b){
@@ -14,7 +15,7 @@ int Student::Calc_fine(){
     int fine=0;
     time_t t;
     for(auto book:books){
-        t=book.show_dueDate();
+        t=(*book).show_dueDate();
         if(time(0)>t){
             t=difftime(time(0),t);
             fine+=(t/86400)*fine_day();
@@ -24,7 +25,7 @@ int Student::Calc_fine(){
 }
 void Student::clear_fine(){
     for(auto book:books){
-        book.unissue();
+        (*book).unissue();
     }
     books.clear();
 }
@@ -33,6 +34,6 @@ bool Student::add_book(Book &b){
         cout<<"Max issue limit reached!"<<endl;
         return false;
     }
-    books.push_back(&b);
+    books.push_back(make_shared<Book>(b));
     return true;
 }

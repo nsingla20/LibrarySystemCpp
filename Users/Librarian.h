@@ -2,6 +2,7 @@
 #include "User.h"
 #include "clone.h"
 #include <boost/serialization/serialization.hpp>
+#include <boost/serialization/shared_ptr.hpp>
 class Librarian : public User{
     CLONE(Librarian)
     public:

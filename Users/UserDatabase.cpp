@@ -3,12 +3,14 @@
 #include<string>
 #include <fstream>
 #include <boost/serialization/shared_ptr.hpp>
-#include <boost/ptr_container/ptr_vector.hpp>
-#include <boost/serialization/map.hpp> 
+// #include <boost/ptr_container/ptr_vector.hpp>
+// #include <boost/serialization/map.hpp> 
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
-#include <boost/make_shared.hpp>
+// #include <boost/make_shared.hpp>
 #include<iostream>
+#include<memory>
+#include<map>
 // boost::ptr_vector<User> UserDatabase::users;
 using namespace std;
 map<int,shared_ptr<User>> UserDatabase::m;
@@ -21,6 +23,7 @@ void UserDatabase::add(User &u){
     m[u.get_id()]=u.clone();
     cout<<"Account with id:"<<u.get_id()<<" added to database (Account type:"<<typeid(*(m[u.get_id()])).name()<<") admin:"<<u.is_admin()<<endl;
     // cout<<(*m[u.username]).Calc_fine()<<endl;
+    save();
 }
 bool UserDatabase::exists(int id){
     auto i=m.find(id);
@@ -74,6 +77,6 @@ void UserDatabase::load(){
             m[(*u).get_id()]=u;
         }
     }catch(exception e){}
-    cout<<"User Database loaded"<<endl;
+    cout<<"User Database loaded with "<<m.size()<<" users"<<endl;
     ifs.close();
 }

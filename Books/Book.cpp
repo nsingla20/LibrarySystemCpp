@@ -1,6 +1,6 @@
-#include "Book.h"
+#include "Books.h"
 #include "../Users/User.h"
-#include <boost/serialization/shared_ptr.hpp>
+// #include <boost/serialization/shared_ptr.hpp>
 #include<ctime>
 #include<iostream>
 using namespace std;
@@ -37,4 +37,7 @@ bool Book::is_available(){
 void Book::unissue(){
     issue_to=nullptr;
     issue_t=time(0);
+}
+Book::Book(string t,string a,string I,string P):title(t),author(a),ISBN(I),Pub(P){
+    BookDatabase::add(*this);
 }

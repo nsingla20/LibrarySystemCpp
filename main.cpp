@@ -1,9 +1,10 @@
 #include "Users/Users.h"
+#include "Books/BookDatabase.h"
 #include <bits/stdc++.h>
 #include "choose.h"
 #include "authen/authen.h"
 #include "Menu/Menu.h"
-#include <boost/serialization/shared_ptr.hpp>
+// #include <boost/serialization/shared_ptr.hpp>
 #include <cstdlib>
 #include <boost/serialization/export.hpp>
 BOOST_CLASS_EXPORT_GUID(Student, "Student")
@@ -13,7 +14,9 @@ using namespace std;
 
 int main(int, char**) {
     UserDatabase::load();
+    BookDatabase::load();
     atexit(UserDatabase::save);
+    atexit(BookDatabase::save);
     cout<<"Welcome! to Library Management System"<<endl;
     // Professor p("naman","n",1);
     // Student s("n","n",2);
