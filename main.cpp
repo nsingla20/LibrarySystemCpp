@@ -11,7 +11,7 @@ BOOST_CLASS_EXPORT_GUID(Professor, "Professor")
 BOOST_CLASS_EXPORT_GUID(Librarian, "Librarian")
 using namespace std;
 
-int main(int, char**) {
+int min(int, char**) {
     UserDatabase::load();
     atexit(UserDatabase::save);
     cout<<"Welcome! to Library Management System"<<endl;
