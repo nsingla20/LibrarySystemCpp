@@ -5,15 +5,7 @@
 #include "../authen/Register.h"
 #include<memory>
 #include<bits/stdc++.h>
-void printv(vector<string> v){
-    if(v.size()==0){
-        cout<<"Empty"<<endl;
-        return;
-    }
-    for(int i=1;i<=v.size();i++){
-        cout<<i<<". "<<v[i-1]<<endl;
-    }
-}
+#include "manage.h"
 void change_users(shared_ptr<User> u){
     vector<string> ch;
     start:

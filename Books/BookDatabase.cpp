@@ -10,6 +10,7 @@
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
 #include<iostream>
+#include "createBook.h"
 using namespace std;
 map<string,shared_ptr<Book>> BookDatabase::m;
 void BookDatabase::save(){
@@ -51,7 +52,7 @@ vector<string> BookDatabase::list_issue(){
     vector<string> v;
     for(auto i:m){
         if((*(i.second)).get_issue_to()!=nullptr){
-            v.push_back(string(*(i.second)));
+            v.push_back(string(*(i.second))+"\nFine: Rs"+to_string(fine(*(i.second))));
         }
     }
     return v;
@@ -60,7 +61,7 @@ vector<string> BookDatabase::list_issue(User& u){
     vector<string> v;
     for(auto i:m){
         if((*(i.second)).get_issue_to()!=nullptr && (*((*(i.second)).get_issue_to())).get_id()==u.get_id()){
-            v.push_back(string(*(i.second)));
+            v.push_back(string(*(i.second))+"\nFine: Rs"+to_string(fine(*(i.second))));
         }
     }
     return v;

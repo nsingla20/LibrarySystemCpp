@@ -1,9 +1,10 @@
 #include "Student.h"
 #include <ctime>
-#include "../Books/Book.h"
+#include "../Books/Books.h"
 #include<iostream>
 #include<memory>
 #include "UserDatabase.h"
+// #include "../Books/createBook.h"
 // #include <boost/ptr_container/ptr_vector.hpp>
 using namespace std;
 
@@ -30,10 +31,10 @@ void Student::clear_fine(){
     books.clear();
 }
 bool Student::add_book(Book &b){
-    if (books.size()==5){
-        cout<<"Max issue limit reached!"<<endl;
+    if (issueList(this->get_id()).size()==5){
+        cout<<"Max issue limit for issue reached!"<<endl;
         return false;
     }
-    books.push_back(make_shared<Book>(b));
+    // books.push_back(make_shared<Book>(b));
     return true;
 }

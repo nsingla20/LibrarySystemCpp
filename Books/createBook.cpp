@@ -9,6 +9,7 @@
 #include<vector>
 #include<string>
 #include<memory>
+#include <ctime>
 Book& createBook(){
     string title,author,ISBN,Pub;
     cout<<"Please fill Book details :"<<endl;
@@ -60,13 +61,24 @@ void updateBook(){
 vector<string> issueList(){
     int x;
     x=getint("id(-1 to list all issues): ");
+    return issueList(x);
+}
+vector<string> issueList(int x){
     if(x>-1){
         if(UserDatabase::exists(x)){
             return BookDatabase::list_issue(*UserDatabase::search(x));
         }
         cout<<"User with id: "<<x<<" doesn't exist!"<<endl;
         return *(new vector<string>());
-    }else{
-        return BookDatabase::list_issue();
     }
+    return BookDatabase::list_issue();
+}
+int fine(Book& b){
+    time_t t=b.show_dueDate();
+    if(time(0)>t){
+        t=time(0)-t;
+        // return 1;
+        return (t/86400)*((*(b.get_issue_to())).fine_day());
+    }
+    return 0;
 }
