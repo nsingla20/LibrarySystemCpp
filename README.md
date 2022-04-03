@@ -17,7 +17,7 @@
 - Every functionality must be in appropriate class. (Ex. Professor can see all the books. This should be performed by calling Display() method of “Book database” class. You don’t need to put Display all books() method in professor class.)
 - List of classes: Use classes shown in Figure 1 to implement above functionalities. You can add more classes or change the structure of classes (add attributes or methods in particular class).
 
-![List of Classes](https://pasteboard.co/8zFu2fTjSvRd.png)
+![List of Classes](./Classes.png)
 
 ### Steps for execution
 
